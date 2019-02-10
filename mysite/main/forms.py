@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Teacher
 from .models import Student
+from .models import Class
 
 
 class SignUpForm(UserCreationForm):
@@ -25,3 +26,10 @@ class SignUpForm(UserCreationForm):
 
     def clean(self):
         return self.cleaned_data
+
+
+
+class ClassForm(forms.ModelForm):
+    class Meta:
+        model = Class
+        fields = ('name', 'class_code')

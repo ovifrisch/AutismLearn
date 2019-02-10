@@ -15,6 +15,7 @@ class Student(models.Model):
 
 class Class(models.Model):
     name = models.CharField(max_length=50)
+    class_code = models.IntegerField(unique=True)
     students = models.ManyToManyField(Student)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, default=None)
 

@@ -8,7 +8,18 @@ from django.contrib import messages
 
 
 def homepage(request):
-    return render(request=request, template_name="main/home.html", context={"user":request.user})
+    if (not request.user.is_authenticated):
+        return render(request=request, template_name="main/home.html", context={"user":request.user})
+
+    elif (hasattr(request.user, 'teacher')):
+        return render(request=request, template_name="main/home.html", context={"user":request.user, "classes":request.user.teacher.class_set.all()})
+
+    else:
+        return render(request=request, template_name="main/home.html", context={"user":request.user, "classes":request.user.student.class_set.all()})
+
+def about(request):
+    return render(request=request, template_name="main/about.html")
+
 
 
 def register(request):
