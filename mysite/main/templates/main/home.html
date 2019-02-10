@@ -1,6 +1,9 @@
 {% extends "main/header.html"%}
 
 {% block content %}
-hey
-
+  {% if user.student %}
+    {% include "main/student_dashboard.html" %}
+  {% elif user.teacher%}
+    {% include "main/teacher_dashboard.html" %}
+  {% endif %}
 {% endblock %}

@@ -6,16 +6,10 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-  <nav>
-    <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Autism Learn</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="collapsible.html">About</a></li>
-        <li><a href="/register">Register</a></li>
-        <li><a href="/login">Signup</a></li>
-      </ul>
-    </div>
-  </nav>
+
+  {% include "main/includes/navbar.html"%}
+  {% include "main/includes/messages.html"%}
+  
   <div class="container">
     <br>
     {% block content %}
