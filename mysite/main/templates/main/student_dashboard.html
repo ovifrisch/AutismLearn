@@ -1,0 +1,18 @@
+
+<div class="join classes">
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn"type="submit">Join Class</button>
+  </form>
+</div>
+
+<br><br>
+<h4>My Classes</h4>
+<br>
+<div class="all_classes">
+  {% for class in classes %}
+    <a href="classes/{{class.class_slug}}"><h5>{{class.name}}</h5></a>
+    <br>
+  {% endfor %}
+</div>

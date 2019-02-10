@@ -33,3 +33,8 @@ class ClassForm(forms.ModelForm):
     class Meta:
         model = Class
         fields = ('name', 'class_code')
+
+
+class JoinClassForm(forms.Form):
+    join_code = forms.IntegerField()
+    join_code.label = "Enter the Class Code Your Teacher Gave You"

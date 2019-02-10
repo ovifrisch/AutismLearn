@@ -2,12 +2,30 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from .forms import SignUpForm
+from .forms import SignUpForm, JoinClassForm
 from django.contrib import messages
+from .models import Class
 # Create your views here.
 
 
 def homepage(request):
+    if (request.method == "POST"):
+        form = JoinClassForm(request.POST)
+        if (form.is_valid()):
+            enrolled = False
+            for c in Class.objects.all():
+                code = form.cleaned_data.get("join_code")
+                if (c.class_code == code):
+                    request.user.student.class_set.add(c) # add the student to the class
+                    messages.success(request, f"You are now enrolled in {c.name}")
+                    enrolled = True
+            if not enrolled:
+                messages.error(request, f"We could not find a class with Join Code {code}.")
+        return redirect("main:homepage")
+
+
+
+
     if (not request.user.is_authenticated):
         return render(request=request, template_name="main/home.html", context={"user":request.user})
 
@@ -15,7 +33,8 @@ def homepage(request):
         return render(request=request, template_name="main/home.html", context={"user":request.user, "classes":request.user.teacher.class_set.all()})
 
     else:
-        return render(request=request, template_name="main/home.html", context={"user":request.user, "classes":request.user.student.class_set.all()})
+        form = JoinClassForm()
+        return render(request=request, template_name="main/home.html", context={"user":request.user, "classes":request.user.student.class_set.all(), "form":form})
 
 def about(request):
     return render(request=request, template_name="main/about.html")

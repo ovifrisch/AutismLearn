@@ -1,14 +1,14 @@
-<br><br>
+
 <div class="add_classes">
   <a class="waves-effect waves-light btn-large" href="/new_class">Add a Class</a>
 </div>
-<br><br>
 
+<br><br>
 <h4>My Classes</h4>
 <br>
 <div class="all_classes">
   {% for class in classes %}
-    <h5>{{class.name}}</h5>
+    <a href="classes/{{class.class_slug}}"><h5>{{class.name}}</h5></a>
     <br>
   {% endfor %}
 </div>

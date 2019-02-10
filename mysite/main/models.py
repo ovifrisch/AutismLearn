@@ -14,8 +14,9 @@ class Student(models.Model):
         return self.user.username
 
 class Class(models.Model):
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     class_code = models.IntegerField(unique=True)
+    class_slug = models.CharField(max_length=200, default=1)
     students = models.ManyToManyField(Student)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE, default=None)
 
@@ -32,6 +33,8 @@ class StudentInterest(models.Model):
 class Assignment(models.Model):
     name = models.CharField(max_length=50)
     subject = models.CharField(max_length=50)
+    due_date = models.DateTimeField(null=True)
+    assignment_slug = models.CharField(max_length=200, default=1)
     _class = models.ForeignKey(Class, on_delete=models.CASCADE)
 
     def __str__(self):

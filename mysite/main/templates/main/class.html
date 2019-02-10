@@ -1,0 +1,9 @@
+{% extends "main/header.html"%}
+
+{% block content %}
+  {% if user.student %}
+    {% include "main/student_classroom.html" %}
+  {% elif user.teacher%}
+    {% include "main/teacher_classroom.html" %}
+  {% endif %}
+{% endblock %}
