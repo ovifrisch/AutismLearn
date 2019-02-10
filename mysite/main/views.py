@@ -5,6 +5,11 @@ from django.contrib.auth import login, logout, authenticate
 from .forms import SignUpForm, JoinClassForm
 from django.contrib import messages
 from .models import Class
+from django.views.decorators.csrf import csrf_exempt
+from PIL import Image
+from base64 import decodestring
+import base64
+from io import BytesIO
 # Create your views here.
 
 
@@ -38,6 +43,24 @@ def homepage(request):
 
 def about(request):
     return render(request=request, template_name="main/about.html")
+
+@csrf_exempt
+def add_interest(request):
+    if (request.method == "POST"):
+        interest = request.POST["interest"]
+        return HttpResponse("Success!")
+
+@csrf_exempt
+def get_handwritten(request):
+    if (request.method == "POST"):
+        image = request.POST["imgBase64"]
+        print(image)
+        # im = Image.open(BytesIO(base64.b64decode(image)))
+        # im.save("im.jpeg")
+        with open("imageToSave.jpeg", "wb") as fh:
+            fh.write(base64.b64decode(image.replace("data:image/jpeg;base64,", "")))
+        return HttpResponse("Success!")
+
 
 
 

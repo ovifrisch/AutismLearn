@@ -1,18 +1,57 @@
+{% load static %}
 
-<div class="join classes">
-  <form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <button class="btn"type="submit">Join Class</button>
-  </form>
+<div class="row">
+  <div class="col s12 m6">
+    <div class="join classes">
+      <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button class="btn"type="submit">Join Class</button>
+      </form>
+    </div>
+  </div>
+  <div class="col s12 m6 show_us">
+    <h4>Draw an object you like</h4>
+  </div>
 </div>
-
 <br><br>
-<h4>My Classes</h4>
-<br>
-<div class="all_classes">
-  {% for class in classes %}
-    <a href="classes/{{class.class_slug}}"><h5>{{class.name}}</h5></a>
+
+<div class="row">
+  <div class="col s12 m6">
+    <h4>My Classes</h4>
     <br>
-  {% endfor %}
+    <div class="all_classes">
+      {% for class in classes %}
+        <a href="classes/{{class.class_slug}}"><h5>{{class.name}}</h5></a>
+        <br>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col s12 m6">
+    <div id="signature-pad" class="signature-pad">
+        <div class="signature-pad--body">
+          <canvas class="theCanvas"></canvas>
+        </div>
+        <div class="signature-pad--footer">
+          <button type="button" class="button clear" onclick="clearIm()">Clear</button>
+        </div>
+      </div>
+      <button class="waves-effect waves-light btn-large submitIm" href="#" onclick="submitIm()">Submit</button>
+
+      <br>
+      <h4>Select images you like</h4>
+      <br>
+      <div class="row">
+        <div class="col s4 m2">
+          <img src="{% static 'main/ims/octupus.jpg'%}" alt="" height=50px; width=50px; class="image_sel" id="octopus">
+        </div>
+
+        <div class="col s4 m2">
+          <img src="{% static 'main/ims/tree.jpg'%}" alt="" height=50px; width="50px" class="image_sel" id="tree">
+        </div>
+        <div class="col s4 m2 image_sel">
+          <img src="{% static 'main/ims/train.jpg'%}" alt="" height=50px; width="50px" class="image_sel" id="train">
+        </div>
+      </div>
+  </div>
 </div>

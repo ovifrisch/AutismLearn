@@ -1,0 +1,20 @@
+.theCanvas {
+  border-radius: 2px;
+  border-width: 2px;
+  border-color: black;
+  border-style: solid;
+}
+
+.show_us {
+  position: relative;
+  top: 120px;
+}
+
+.submitIm {
+  position: relative;
+  left: 100px;
+}
+
+.image_sel:hover {
+  cursor: grabbing;
+}
