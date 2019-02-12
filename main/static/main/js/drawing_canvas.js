@@ -3,7 +3,9 @@ var canvas
 
 $(document).ready(function(){
   canvas = document.querySelector("canvas");
-  signaturePad = new SignaturePad(canvas);
+  if (canvas != null) {
+    signaturePad = new SignaturePad(canvas);
+  }
 })
 
 function clearIm() {
