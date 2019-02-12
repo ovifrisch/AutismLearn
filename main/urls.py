@@ -13,6 +13,6 @@ urlpatterns = [
     path("new_class/", teacher_views.new_class, name="new_class"),
     path("classes/<the_slug>/", teacher_views.class_slug, name="class_slug"),
     path(r'button_check/', views.get_handwritten, name="button_check/"),
-
-    path(r'add_interest/', views.add_interest, name="add_interest")
+    path(r'add_interest/', views.add_interest, name="add_interest"),
+    path('new_assignment/', views.new_assignment, name="new_assignment")
 ]

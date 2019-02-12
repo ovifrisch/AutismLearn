@@ -38,3 +38,10 @@ class ClassForm(forms.ModelForm):
 class JoinClassForm(forms.Form):
     join_code = forms.IntegerField()
     join_code.label = "Enter the Class Code Your Teacher Gave You"
+
+
+class AssignmentForm(forms.Form):
+    assignment_name = forms.CharField(max_length=50)
+
+    def save():
+        return

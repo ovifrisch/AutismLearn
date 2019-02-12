@@ -1,0 +1,15 @@
+
+
+{% extends "main/header.html"%}
+{% load static %}
+
+{% block content %}
+  <form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <div class="add_classes">
+      <a class="waves-effect waves-light btn-large" onclick="add_question()">Add Question</a>
+    </div>
+    <button class="btn"type="submit">Create Assignment</button>
+  </form>.
+{% endblock %}

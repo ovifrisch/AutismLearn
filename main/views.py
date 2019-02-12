@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-from .forms import SignUpForm, JoinClassForm
+from .forms import SignUpForm, JoinClassForm, AssignmentForm
 from django.contrib import messages
 from .models import Class
 from django.views.decorators.csrf import csrf_exempt
@@ -43,6 +43,13 @@ def homepage(request):
 
 def about(request):
     return render(request=request, template_name="main/about.html")
+
+def new_assignment(request):
+    if (request.method == "POST"):
+        return HttpResponse("Success!")
+
+    form = AssignmentForm()
+    return render(request=request, template_name="main/new_assignment.html", context={"user":request.user, "form":form})
 
 @csrf_exempt
 def add_interest(request):
