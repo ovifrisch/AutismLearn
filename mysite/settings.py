@@ -28,9 +28,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 SECRET_KEY = '6yhgtxhwz5191(_o!+2q&+#-5)&%u7cx4r&-vc+pstr@0nzvtj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['lit-island-28681.herokuapp.com']
+ALLOWED_HOSTS = ['lit-island-28681.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
