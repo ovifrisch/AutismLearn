@@ -1,9 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Teacher
-from .models import Student
-from .models import Class
+from .models import Teacher, Student, Class, Assignment, GenericQuestion
 
 
 class SignUpForm(UserCreationForm):
@@ -41,7 +39,11 @@ class JoinClassForm(forms.Form):
 
 
 class AssignmentForm(forms.Form):
-    assignment_name = forms.CharField(max_length=50)
+    class Meta:
+        model = Assignment
+        fields = ('name', 'due_date')
 
-    def save():
-        return
+class QuestionForm(forms.Form):
+    class Meta:
+        model = GenericQuestion
+        fields = ("string_representation",)

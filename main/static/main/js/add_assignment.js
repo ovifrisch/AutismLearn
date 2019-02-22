@@ -4,5 +4,7 @@ $(document).ready(function(){
 
 
 function add_question() {
-  
+  html = $(".question_template").html()
+  console.log(html);
+  $("#questions").append(html)
 }

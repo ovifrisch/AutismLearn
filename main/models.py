@@ -32,7 +32,6 @@ class StudentInterest(models.Model):
 
 class Assignment(models.Model):
     name = models.CharField(max_length=50)
-    subject = models.CharField(max_length=50)
     due_date = models.DateTimeField(null=True)
     assignment_slug = models.CharField(max_length=200, default=1)
     _class = models.ForeignKey(Class, on_delete=models.CASCADE)
@@ -42,8 +41,9 @@ class Assignment(models.Model):
 
 class GenericQuestion(models.Model):
     number = models.IntegerField()
-    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
     string_representation = models.TextField()
+    assignment = models.ForeignKey(Assignment, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.string_representation

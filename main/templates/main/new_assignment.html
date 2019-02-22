@@ -4,9 +4,18 @@
 {% load static %}
 
 {% block content %}
+  <div class="question_template" formaction="/new_assignment/" hidden>
+    <input type="text">
+  </div>
+
+
+
   <form method="POST">
     {% csrf_token %}
     {{form.as_p}}
+    <div id="questions">
+
+    </div>
     <div class="add_classes">
       <a class="waves-effect waves-light btn-large" onclick="add_question()">Add Question</a>
     </div>

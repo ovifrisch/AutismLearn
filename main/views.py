@@ -6,7 +6,6 @@ from .forms import SignUpForm, JoinClassForm, AssignmentForm
 from django.contrib import messages
 from .models import Class
 from django.views.decorators.csrf import csrf_exempt
-from PIL import Image
 from base64 import decodestring
 import base64
 from io import BytesIO
@@ -46,6 +45,7 @@ def about(request):
 
 def new_assignment(request):
     if (request.method == "POST"):
+        print(request.POST)
         return HttpResponse("Success!")
 
     form = AssignmentForm()
@@ -61,9 +61,6 @@ def add_interest(request):
 def get_handwritten(request):
     if (request.method == "POST"):
         image = request.POST["imgBase64"]
-        print(image)
-        # im = Image.open(BytesIO(base64.b64decode(image)))
-        # im.save("im.jpeg")
         with open("imageToSave.jpeg", "wb") as fh:
             fh.write(base64.b64decode(image.replace("data:image/jpeg;base64,", "")))
         return HttpResponse("Success!")
