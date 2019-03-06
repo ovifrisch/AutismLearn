@@ -9,26 +9,26 @@ from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 class Scraper:
-    def __init__(self, home_url, chrome_path):
-        self.home_url = home_url
-        self.driver = webdriver.Chrome(chrome_path)
+	def __init__(self, home_url, chrome_path):
+		self.home_url = home_url
+		self.driver = webdriver.Chrome(chrome_path)
 
-    def start(self):
-        self.driver.get(self.home_url)
-        problinks = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "skill-tree-skill-link")))
-        for idx, plink in enumerate(problinks):
-            plinks = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "skill-tree-skill-link")))
-            plink = plinks[idx]
-            plink.click()
-            WebDriverWait(self.driver, 10)
-            self.driver.save_screenshot("problem" + str(idx) + ".png")
-            self.driver.get(self.home_url)
+	def start(self):
+		self.driver.get(self.home_url)
+		problinks = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "skill-tree-skill-link")))
+		for idx, plink in enumerate(problinks):
+			plinks = WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located((By.CLASS_NAME, "skill-tree-skill-link")))
+			plink = plinks[idx]
+			plink.click()
+			WebDriverWait(self.driver, 10)
+			self.driver.save_screenshot("problem" + str(idx) + ".png")
+			self.driver.get(self.home_url)
 
 
 
 if __name__ == "__main__":
-    s = Scraper("https://www.ixl.com/math/grade-1", "../chromedriver")
-    s.start()
+	s = Scraper("https://www.ixl.com/math/grade-1", "../chromedriver")
+	s.start()
 
 
 #

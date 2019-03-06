@@ -5,45 +5,34 @@ from .models import Teacher, Student, Class, Assignment, GenericQuestion
 
 
 class SignUpForm(UserCreationForm):
-    type = forms.BooleanField(required=False, help_text='Are you a Student?')
+	type = forms.BooleanField(required=False, help_text='Are you a Student?')
 
-    class Meta:
-        model = User
-        fields = ('username', 'email', 'password1', 'password2')
+	class Meta:
+		model = User
+		fields = ('username', 'email', 'password1', 'password2')
 
-    def save(self, commit=True):
-        user = super(SignUpForm, self).save(commit=True)
-        if (self.cleaned_data['type']):
-            student = Student(user=user)
-            student.save()
-        else:
-            teacher = Teacher(user=user)
-            teacher.save()
+	def save(self, commit=True):
+		user = super(SignUpForm, self).save(commit=True)
+		if (self.cleaned_data['type']):
+			student = Student(user=user)
+			student.save()
+		else:
+			teacher = Teacher(user=user)
+			teacher.save()
 
-        return user
+		return user
 
-    def clean(self):
-        return self.cleaned_data
+	def clean(self):
+		return self.cleaned_data
 
 
 
 class ClassForm(forms.ModelForm):
-    class Meta:
-        model = Class
-        fields = ('name', 'class_code')
+	class Meta:
+		model = Class
+		fields = ('name', 'class_code')
 
 
 class JoinClassForm(forms.Form):
-    join_code = forms.IntegerField()
-    join_code.label = "Enter the Class Code Your Teacher Gave You"
-
-
-class AssignmentForm(forms.Form):
-    class Meta:
-        model = Assignment
-        fields = ('name', 'due_date')
-
-class QuestionForm(forms.Form):
-    class Meta:
-        model = GenericQuestion
-        fields = ("string_representation",)
+	join_code = forms.IntegerField()
+	join_code.label = "Enter the Class Code Your Teacher Gave You"

@@ -4,21 +4,26 @@
 {% load static %}
 
 {% block content %}
-  <div class="question_template" formaction="/new_assignment/" hidden>
-    <input type="text">
-  </div>
 
+<div class="question_template" hidden>
+	<label for="new_question" class="question_label">Question: </label>
+	<input type="text" name="new_question" class="new_question">
+</div>
 
+<form class="assignment_form" action="/new_assignment/" method="POST">
+	{% csrf_token %}
+	<label for="assignment_name">Name: </label>
+	<input type="text" name="assignment_name" class="assignment_name">
 
-  <form method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <div id="questions">
+	<label for="due_date">Due date: </label>
+	<input type="datetime-local" name="due_date" class="due_date">
 
-    </div>
-    <div class="add_classes">
-      <a class="waves-effect waves-light btn-large" onclick="add_question()">Add Question</a>
-    </div>
-    <button class="btn"type="submit">Create Assignment</button>
-  </form>.
+	<div id="questions">
+
+	</div>
+	<div class="add_questions">
+		<a class="waves-effect waves-light btn-large" onclick="add_question()">Add Question</a>
+	</div>
+	<button class="btn"type="submit">Create Assignment</button>
+</form>
 {% endblock %}

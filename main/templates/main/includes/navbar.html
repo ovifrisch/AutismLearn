@@ -1,15 +1,15 @@
 <nav>
-  <div class="nav-wrapper">
-    <a href="/" class="brand-logo">Autistic Classroom</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li><a href="/about">About</a></li>
+	<div class="nav-wrapper">
+		<a href="/" class="brand-logo">Autistic Classroom</a>
+		<ul id="nav-mobile" class="right hide-on-med-and-down">
+			<li><a href="/about">About</a></li>
 
-      {% if user.is_authenticated %}
-      <li><a href="/logout">Logout</a></li>
-      {% else %}
-      <li><a href="/register">Register</a></li>
-      <li><a href="/login">Login</a></li>
-      {% endif %}
-    </ul>
-  </div>
+			{% if user.is_authenticated %}
+			<li><a href="/logout">Logout</a></li>
+			{% else %}
+			<li><a href="/register">Register</a></li>
+			<li><a href="/login">Login</a></li>
+			{% endif %}
+		</ul>
+	</div>
 </nav>

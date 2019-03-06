@@ -2,11 +2,11 @@
 {% load static %}
 
 {% block content %}
-  {% if user.student %}
-    {% include "main/student_dashboard.html" %}
-  {% elif user.teacher%}
-    {% include "main/teacher_dashboard.html" %}
-  {% else %}
-    <img src="{% static 'main/ims/autism.jpg'%}" alt="" height=100%; width=100%;>
-  {% endif %}
+	{% if user.student %}
+		{% include "main/student_dashboard.html" %}
+	{% elif user.teacher%}
+		{% include "main/teacher_dashboard.html" %}
+	{% else %}
+		<img src="{% static 'main/ims/autism.jpg'%}" alt="" height=100%; width=100%;>
+	{% endif %}
 {% endblock %}
