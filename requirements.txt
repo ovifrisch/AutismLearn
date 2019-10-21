@@ -6,7 +6,7 @@ click==6.7
 clint==0.5.1
 cycler==0.10.0
 decorator==4.3.2
-Django==2.1.5
+Django==2.1.11
 floyd-cli==0.11.17
 future==0.17.1
 gym==0.10.9
